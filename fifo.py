@@ -1,3 +1,7 @@
+'''
+Written By anankur17@gmail.com
+'''
+
 s = "1 2 3 4 4 5 6".split()
 l = list()
 fault = 0
