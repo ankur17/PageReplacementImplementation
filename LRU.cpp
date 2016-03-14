@@ -1,3 +1,4 @@
+//Inplementation of LRU
 #include <iostream>
 #include <stack>
 #include <algorithm>
@@ -17,22 +18,24 @@ void add(int num){
 	
 }
 int main(){
-	int s[10] = {2, 3, 4, 2, 1, 3, 7, 5, 4, 3};
-	//stack<int> st;
+	int segment_size,page_size,fault=0;
+	//int s[100] = {2, 3, 4, 2, 1, 3, 7, 5, 4, 3};
+	cout<<"Enter the size of segment: ";
+	cin>>segment_size;
+	int s[segment_size];
+	cout<<"Enter the segment elements: ";
+	for(int u =0;u<segment_size;u++)
+		cin>>	s[u];
+	cin>>page_size;
 	vector<int> v;
 
-//	v.push_back(12);
-//	v.push_back(22);
-//	v.push_back(52);
-//	v.push_back(74);
-//	v.push_back(89);
-
-	if (find(v.begin(), v.end(), 22)!=v.end()){
-		//cout<<"YP";
-	}
-	for (int i=0;i<10;i++){
+	for (int i=0;i<segment_size;i++){
+		for (int y=0; y<v.size();y++){
+			cout<<v[y]<<" ";
+		}
+		cout<<"\n";
 		add(s[i]);
-		if (v.size()<3){
+		if (v.size()<page_size){
 			if(find(v.begin(), v.end(), s[i])!=v.end()){
 				continue;
 			}else{
@@ -43,6 +46,7 @@ int main(){
 			if(find(v.begin(), v.end(), s[i])!=v.end()){
 				continue;
 			}else{
+				fault++;
 				int tm = st[0];
 				st.erase(st.begin());
 				for(int b=0;b<v.size();b++){
@@ -53,15 +57,12 @@ int main(){
 				}
 			}
 		}
-	cout<<"\n";
+	}
 	for (int y=0; y<v.size();y++){
 		cout<<v[y]<<" ";
 	}
-	}
+	cout<<"\nTotal No. of Foaults: "<<fault<<endl;
 
-	cout<<"\nHello kk\n";
-	for (int y=0; y<st.size();y++){
-		cout<<st[y]<<" ";
-	}
+
 	return 0;
 }
