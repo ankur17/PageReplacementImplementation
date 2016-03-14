@@ -23,11 +23,11 @@ bool see(std::vector<int> v, int num){
 }
 int main(){
 	int falut=0,page=0,slen=0;
-	cout<<"Enter the size of page: ";
-	cin>>page;
 	cout<<"Size of string: ";
 	cin>>slen;
 	cout<<"Enter string: ";
+	cout<<"Enter the size of page: ";
+	cin>>page;
 	int s[100];
 	for (int i=0;i<slen;i++) cin>>s[i];
 //	cout<<"Hello ji\n"<<endl;
@@ -54,6 +54,6 @@ int main(){
 			Print(v);cout<<endl;				
 		}
 	}
-	cout<<"\n\nNumber Of Faluts: "<<falut;
+	cout<<"Number Of Faluts: "<<falut<<endl;
 	return 0;
 }
