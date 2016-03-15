@@ -10,7 +10,7 @@ void Print(std::vector<int> v){
 	for(std::vector<int>::iterator it = v.begin();it!=v.end();it++){
 		cout<<*it<<"\t";
 	}
-	//cout<<endl;
+	cout<<endl;
 }
 bool see(std::vector<int> v, int num){
 	for(std::vector<int>::iterator it = v.begin();it!=v.end();++it){
@@ -22,12 +22,12 @@ bool see(std::vector<int> v, int num){
 	return false;
 }
 int main(){
-	int falut=0,page=0,slen=0;
+	int falut=0,page=0,slen=0,chance=0;
+	cout<<"Enter the size of page: ";
+	cin>>page;
 	cout<<"Size of string: ";
 	cin>>slen;
 	cout<<"Enter string: ";
-	cout<<"Enter the size of page: ";
-	cin>>page;
 	int s[100];
 	for (int i=0;i<slen;i++) cin>>s[i];
 //	cout<<"Hello ji\n"<<endl;
@@ -36,24 +36,26 @@ int main(){
 	for(int i=0;i<slen;i++){
 		if (v.size()<page){
 			if (!see(v,s[i])){
-				v.insert(v.begin(),s[i]);
+				v.push_back(s[i]);
+				falut++;
+				cout<<"FAULT No."<<falut<<"\t";
 				Print(v);
-				cout<<endl;
+	//			cout<<endl;
 			}else
 			Print(v);cout<<endl;				
 		}else{
 			if(!see(v,s[i])){
 				//v.push_back(s[i]);
 				//v.erase(v.begin());
-				v.insert(v.begin(),s[i]);
-				v.pop_back();
-				Print(v);
+				v[chance%page] = s[i];
+				chance++;
 				falut++;
-				cout<<"FAULT No."<<falut<<"\n";
+				cout<<"FAULT No."<<falut<<"\t";
+				Print(v);
 			}else
-			Print(v);cout<<endl;				
+			Print(v);cout<<"\t"<<endl;				
 		}
 	}
-	cout<<"Number Of Faluts: "<<falut<<endl;
+	cout<<"Number Of Faults: "<<falut<<endl;
 	return 0;
 }

@@ -6,6 +6,7 @@ s = "1 2 3 4 4 5 6".split()
 l = list()
 fault = 0
 print "String 	Page Segment    Fault"
+'''
 for a in s:
 	if len(l)>=3:
 		if a in l:
@@ -21,3 +22,25 @@ for a in s:
 
 		print a +" \t\t" + " \t".join(l) + " \t*"*(3-si)
 print "Total No of Faults:",str(fault)
+'''
+chance = 0 
+for a in s:
+	if len(l)>=3:
+		if a in l:
+			print a +" \t\t" +" \t".join(l)
+		else:
+			l[chance%3] = a
+			#l.append(a)
+			chance+=1
+			fault +=1
+			print a +" \t\t" +" \t".join(l) + "\t\tFault No. "+str(fault)
+	else:
+		l.append(a)
+		si = len(l)
+
+		print a +" \t\t" + " \t".join(l) + " \t*"*(3-si)
+
+
+
+print "Total No of Faults:",str(fault)
+
